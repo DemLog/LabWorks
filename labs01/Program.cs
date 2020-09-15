@@ -14,7 +14,7 @@ namespace labs01
 
             DateTime current_date = DateTime.Now; // текущая дата
 
-            Console.WriteLine("Привествую в консольной программе Labs01!\n");
+            Console.WriteLine("Приветствую в консольной программе Labs01!\n");
 
             Console.Write("Введите свое имя: ");
             name = Console.ReadLine();
@@ -106,7 +106,7 @@ namespace labs01
                 number -= 1;
             }
 
-            Console.WriteLine($"\nПривет, {name}. Ваш возраст равен {number} лет. Приятно познакомиться.");
+            Console.WriteLine($"\nПривет, {name}. Ваш возраст равен {number} лет. Приятно познакомиться. :)");
             Console.ReadKey();
         }
     }
