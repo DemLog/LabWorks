@@ -27,7 +27,7 @@ namespace labs02
 
         static bool CheckMovePawn(string start, string end) // метод проверки хода пешки
         {
-            int diff = end[1] - start[1]; // разница Y в координатах
+            int diff = end[1] - start[1];
             if ((start[0] == end[0]) && (diff == 1 || (start[1] == '2' && diff == 2)))
                 return true;
 
@@ -52,8 +52,8 @@ namespace labs02
 
         static bool CheckMoveHorse(string start, string end) // метод проверки хода коня
         {
-            int dx = Math.Abs(start[0] - end[0]); // модуль разницы X координат
-            int dy = Math.Abs(start[1] - end[1]); // модуль разницы Y координат
+            int dx = Math.Abs(start[0] - end[0]);
+            int dy = Math.Abs(start[1] - end[1]); 
             if (dx == 1 && dy == 2 || dx == 2 && dy == 1) 
                 return true;
 
@@ -89,15 +89,14 @@ namespace labs02
         {
             Console.WriteLine("Приветствую в консольной программе Labs02!\n");
 
-            string[] Figures = { "Пешка", "Ладья", "Слон", "Конь", "Ферзь", "Король" }; // массив с именами фигур
+            string[] Figures = { "Пешка", "Ладья", "Слон", "Конь", "Ферзь", "Король" }; 
             //==================================================== Ввод номера фигуры ====================================================
-            Console.WriteLine("Выберите шахматную фигуру:\n" +
-                              "1. {0} (навального...)\n" +
-                              "2. {1}\n" +
-                              "3. {2}\n" +
-                              "4. {3}\n" +
-                              "5. {4}\n" +
-                              "6. {5}", Figures);
+            Console.Write("Выберите шахматную фигуру:\n");
+            for (int i = 0; i < Figures.Length; i++)
+            {
+                Console.WriteLine($"{i+1}. {Figures[i]}");
+            }
+
             string figure_str; // переменная для ввода фигуры в string
             int figure; // переменная для конвертации фигуры в integer 
             do
@@ -115,16 +114,16 @@ namespace labs02
             {
                 Console.WriteLine($"Примеч.: Координаты состоят из 2-х символов. Первый - от {MinFirstCoord} до {MaxFirstCoord}, второй - от {MinSecondCoord} до {MaxSecondCoord}");
                 Console.Write("Введите начальные координаты вашей фигуры: ");
-                startCoordFigure = Console.ReadLine().ToUpper(); // начальная координата
+                startCoordFigure = Console.ReadLine().ToUpper(); 
 
                 Console.Write("Введите конечные координаты вашей фигуры: ");
-                endCoordFigure = Console.ReadLine().ToUpper(); // конечная координата
+                endCoordFigure = Console.ReadLine().ToUpper(); 
             }
-            while (!Correct_Check(startCoordFigure, endCoordFigure)); // цикл ввода с проверкой на корректность
+            while (!CorrectCheck(startCoordFigure, endCoordFigure)); // цикл ввода с проверкой на корректность
             //=============================================================================================================================
 
             PieceMove response = new PieceMove(); // создание экземпляра класса с проверкой хода
-            if (response.CheckMove(figure, startCoordFigure, endCoordFigure)) // основное условие проверки хода
+            if (response.CheckMove(figure, startCoordFigure, endCoordFigure)) 
             {
                 Console.WriteLine("Ваш ход верен!");
             }
@@ -135,7 +134,7 @@ namespace labs02
             Console.ReadKey();
 
         }
-        static bool Correct_Check(string startCoord, string endCoord) // метод проверки корректности координат
+        static bool CorrectCheck(string startCoord, string endCoord) // метод проверки корректности координат
         {
             if (startCoord.Length != 2 || endCoord.Length != 2) // проверка размера
             {
